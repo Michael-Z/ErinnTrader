@@ -1,0 +1,19 @@
+//
+// Prefix header for all source files of the 'ErinnTrader' target in the 'ErinnTrader' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+  #import <UIKit/UIKit.h>
+  #import <Foundation/Foundation.h>
+  #import <QuartzCore/QuartzCore.h>
+  #import <Three20/Three20.h>
+  #import <Three20/Three20+Additions.h>
+  #import "extThree20JSON/extThree20JSON.h"
+  #import "NSString+Encode.h"
+#endif
