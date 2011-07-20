@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Accessor Methods
 
-- (NSString *)formatted_price {
+- (NSString *)formattedPrice {
   int price = [[self.price stringByReplacingOccurrencesOfString:@"," 
                                                      withString:@""] floatValue];
   NSString *formatted;

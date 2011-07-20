@@ -9,6 +9,7 @@
 #import "HouseShopItemViewController.h"
 #import "SettingsViewController.h"
 #import "CreditViewController.h"
+#import "ETDefaultStyleSheet.h"
 
 @interface ErinnTraderAppDelegate ()
 - (void)fadeSplashScreen;
@@ -29,7 +30,6 @@
   navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];  
   
   TTURLMap* map = navigator.URLMap;  
-  
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:@"tt://dev/null" toViewController:self selector:@selector(doNothing)];
   [map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
@@ -45,6 +45,10 @@
   if (![navigator restoreViewControllers]) {  
     [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];  
   }
+}
+
+- (void)initStyleSheet {
+  [TTStyleSheet setGlobalStyleSheet:[[[ETDefaultStyleSheet alloc] init] autorelease]];  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -66,7 +70,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [UIApplication sharedApplication].statusBarHidden = NO;
+  [self initStyleSheet];
   [self initRoutes];
+  [self fadeSplashScreen];
   return YES;
 }
 

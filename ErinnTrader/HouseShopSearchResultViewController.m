@@ -25,13 +25,6 @@
   return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-  }
-  return self;
-}
-
 -(void)loadView {
   [super loadView];
 }
@@ -57,6 +50,10 @@
 #pragma TTTableView Inherit Metnods
 
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+  if ([object isKindOfClass:[TTTableMoreButton class]]) {
+    return;
+  }
+  
   HouseShopItem *item = (HouseShopItem *)((TTTableTextItem *)object).userInfo;
   TTURLAction *action = [[[TTURLAction actionWithURLPath:@"tt://houseShop/item"]
                           applyQuery:[NSDictionary dictionaryWithObject:item forKey:@"item"]] 

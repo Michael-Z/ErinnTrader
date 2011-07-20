@@ -9,7 +9,7 @@
                     @"tt://houseShop",
                     @"tt://settings",
                     @"tt://credit",
-                    nil]];  
+                    nil]];
 }  
 
 @end

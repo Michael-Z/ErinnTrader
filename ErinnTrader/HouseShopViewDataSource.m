@@ -2,16 +2,12 @@
 #import "HouseShopViewDataSource.h"
 #import "HouseShopModel.h"
 #import "HouseShopItem.h"
+#import "ETTableHouseShopItem.h"
+#import "ETTableHouseShopItemCell.h"
 
 @implementation HouseShopViewDataSource
 
 @synthesize houseShopModel = _hosueShopModel;
-
-#pragma -
-#pragma Private Methods
-
-////////////////////////////////////////////////////////////////////////////////
-// logic
 
 #pragma -
 #pragma Inheritance Methods
@@ -47,10 +43,17 @@
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [NSMutableArray array];
   for (HouseShopItem *item in self.houseShopModel.houseShopItems) {
-    TTTableTextItem *tableItem = [TTTableTextItem itemWithText:item.item URL:@"tt://dev/null"];
+    ETTableHouseShopItem *tableItem = [ETTableHouseShopItem itemWithText:item.item 
+                                                                 caption:item.formattedPrice
+                                                                     URL:@"tt://dev/null"];
     tableItem.userInfo = item;
     [items addObject:tableItem];
   }
+  
+  if (!self.houseShopModel.finished) {
+    [items addObject:[TTTableMoreButton itemWithText:@"more…"]];
+  }
+
   self.items = items;
 }
 
@@ -71,7 +74,11 @@
 }
 
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object {   
-  return [super tableView:tableView cellClassForObject:object];  
+  if ([object isKindOfClass:[ETTableHouseShopItem class]]) {  
+    return [ETTableHouseShopItemCell class];  
+  } else {  
+    return [super tableView:tableView cellClassForObject:object];  
+  }  
 }  
 
 @end

@@ -64,8 +64,6 @@ static NSString* const kLabelTriona     = @"triona/";
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading) {
-    [self.boardItems removeAllObjects];
-    
     TTURLRequest* request = [TTURLRequest requestWithURL:self.resourcePath delegate:self];
     request.cachePolicy = cachePolicy;
     request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
@@ -90,7 +88,7 @@ static NSString* const kLabelTriona     = @"triona/";
     [self.boardItems addObject:item];
     index++;
   }
-
+  
   [super requestDidFinishLoad:request];
 }
 

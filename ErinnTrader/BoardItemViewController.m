@@ -29,8 +29,17 @@
   self.view.backgroundColor = [UIColor lightGrayColor];
   self.titleLabel.frame = CGRectMake(0, 0, 320, 44);
   self.detailText.frame = CGRectMake(0, 45, 320, 400);
-  
-  self.titleLabel.text = self.boardItem.title;
+
+//  self.titleLabel.textColor = TTSTYLEVAR(boardItemHeadingColor);
+//  self.titleLabel.font = TTSTYLEVAR(boardItemHeadingFont);
+  self.titleLabel.textAlignment = UITextAlignmentLeft;
+  self.titleLabel.contentMode = UIViewContentModeCenter;
+  self.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+  self.titleLabel.numberOfLines = 0;
+
+  self.titleLabel.text = [NSString stringWithFormat:@"%@\n%@",
+                          self.boardItem.title,
+                          self.boardItem.author];
   self.detailText.text = self.boardItem.content;
 }
 
@@ -41,13 +50,6 @@
   self = [super init];
   if (self) {
     self.boardItem = (BoardItem *)[query objectForKey:@"item"];
-  }
-  return self;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
   }
   return self;
 }

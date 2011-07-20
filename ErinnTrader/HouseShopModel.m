@@ -15,6 +15,8 @@ static NSString* const kLabelTriona     = @"triona/";
 
 @synthesize houseShopItems = _houseShopItems;
 @synthesize searchQuery = _searchQuery;
+@synthesize page = _page;
+@synthesize finished = _finished;
 
 #pragma -
 #pragma Private Methods
@@ -25,11 +27,11 @@ static NSString* const kLabelTriona     = @"triona/";
 - (NSString *)resourcePath {
   NSString *path;
   if (self.searchQuery == @"") {
-    path = [NSString stringWithFormat:@"%@%@%@%@", kServiceBaseURL, kServiceEndPoint, kLabelMari, @"1"];
+    path = [NSString stringWithFormat:@"%@%@%@%d", kServiceBaseURL, kServiceEndPoint, kLabelMari, self.page];
   }
   else {
     NSString *query = [NSString stringWithFormat:@"%@/", [self.searchQuery encodeString:NSUTF8StringEncoding]];
-    path = [NSString stringWithFormat:@"%@%@%@%@%@", kServiceBaseURL, kServiceEndPoint, kLabelMari, query, @"1"];
+    path = [NSString stringWithFormat:@"%@%@%@%@%d", kServiceBaseURL, kServiceEndPoint, kLabelMari, query, self.page];
   }
   return path;
 }
@@ -42,6 +44,7 @@ static NSString* const kLabelTriona     = @"triona/";
   if (self) {
     self.houseShopItems = [[NSMutableArray array] retain];
     self.searchQuery = @"";
+    self.page = 1;
   }
   return self;
 }
@@ -51,7 +54,7 @@ static NSString* const kLabelTriona     = @"triona/";
   if (self) {
     self.houseShopItems = [[NSMutableArray array] retain];
     self.searchQuery = searchQuery;
-    [[TTURLCache sharedCache] removeURL:self.resourcePath fromDisk:YES];
+    self.page = 1;
   }
   return self;
 }
@@ -67,10 +70,17 @@ static NSString* const kLabelTriona     = @"triona/";
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading) {
-    [self.houseShopItems removeAllObjects];
+    if (more) {
+      self.page = self.page + 1;
+    }
+    else {
+      self.page = 1;
+      self.finished = NO;
+      [self.houseShopItems removeAllObjects];
+    }
     
     TTURLRequest* request = [TTURLRequest requestWithURL:self.resourcePath delegate:self];
-    request.cachePolicy = cachePolicy;
+    request.cachePolicy = TTURLRequestCachePolicyNoCache;
     request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     
@@ -91,6 +101,10 @@ static NSString* const kLabelTriona     = @"triona/";
     item.comment = [element objectForKey:@"comment"];
     item.coupon = [element objectForKey:@"coupon"];
     [self.houseShopItems addObject:item];
+  }
+
+  if ([elements count] == 0 || self.page >= 10) {
+    self.finished = YES;
   }
   
   [super requestDidFinishLoad:request];

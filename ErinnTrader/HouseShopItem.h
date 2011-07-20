@@ -18,4 +18,5 @@
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic, copy) NSString *comment;
 @property (nonatomic, copy) NSString *coupon;
+- (NSString *)formattedPrice;
 @end

@@ -13,6 +13,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 // initializer
 
+- (void)initView {
+  UIImage* image = [UIImage imageNamed:@"houseshop.png"];
+  self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"HouseShop" image:image tag:1] autorelease];
+}
+
 - (void)initNavigationBar {
   self.navigationItem.rightBarButtonItem = 
   [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
@@ -44,6 +49,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
+    [self initView];
   }
   return self;
 }
@@ -71,10 +77,14 @@
   [super dealloc];
 }
 
-#pragma -
-#pragma TTTableView Inherit Metnods
+#pragma mark -
+#pragma mark TTTableView Inherit Methods
 
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+  if ([object isKindOfClass:[TTTableMoreButton class]]) {
+    return;
+  }
+  
   HouseShopItem *item = (HouseShopItem *)((TTTableTextItem *)object).userInfo;
   TTURLAction *action = [[[TTURLAction actionWithURLPath:@"tt://houseShop/item"]
                                               applyQuery:[NSDictionary dictionaryWithObject:item forKey:@"item"]] 
@@ -82,8 +92,8 @@
   [[TTNavigator navigator] openURLAction:action];
 }
 
-#pragma -
-#pragma Event Handling Metnods
+#pragma mark -
+#pragma mark Event Handling Methods
 
 - (void)searchButtonTouched {
   [UIView animateWithDuration:0.3
@@ -98,8 +108,8 @@
   [self.searchBar becomeFirstResponder];
 }
 
-#pragma -
-#pragma UISearchBarDelegate Methods
+#pragma mark -
+#pragma mark UISearchBarDelegate Methods
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {  
   if ([searchBar.text length] == 0) {

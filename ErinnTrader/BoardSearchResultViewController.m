@@ -6,6 +6,29 @@
 @implementation BoardSearchResultViewController
 
 @synthesize searchQuery = _searchQuery;
+@synthesize tabBar = _tabBar;
+
+#pragma mark -
+#pragma mark Private Methods
+
+////////////////////////////////////////////////////////////////////////////////
+// initializer
+
+- (void)initTabBar {
+  self.tabBar = [[TTTabStrip alloc] initWithFrame:CGRectMake(0, 0, 320, 41)];
+  self.tabBar.delegate = self;
+  self.tabBar.tabItems = [NSArray arrayWithObjects:
+                          [[[TTTabItem alloc] initWithTitle:@"    ALL    "] autorelease],
+                          [[[TTTabItem alloc] initWithTitle:@"    SELL    "] autorelease],
+                          [[[TTTabItem alloc] initWithTitle:@"    BUY    "] autorelease],
+                          nil];
+  [self.view addSubview:self.tabBar];
+}
+
+- (void)initTableView {
+  self.tableView.frame = 
+    CGRectMake(0, self.tableView.frame.origin.y + 41, 320, self.tableView.frame.size.height - 41);
+}
 
 #pragma mark -
 #pragma mark Three20 Inherit Methods
@@ -25,15 +48,10 @@
   return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-  }
-  return self;
-}
-
 - (void)loadView {
   [super loadView];
+  [self initTabBar];
+  [self initTableView];
   self.variableHeightRows = YES;
 }
 
@@ -50,6 +68,7 @@
 }
 
 - (void)dealloc {
+  self.tabBar = nil;
   self.searchQuery = nil;
   [super dealloc];
 }
@@ -63,6 +82,15 @@
                           applyQuery:[NSDictionary dictionaryWithObject:item forKey:@"item"]] 
                          applyAnimated:YES];
   [[TTNavigator navigator] openURLAction:action];
+}
+
+#pragma mark -
+#pragma mark TTTabDelegate Methods
+
+- (void)tabBar:(TTTabBar*)tabBar tabSelected:(NSInteger)selectedIndex {
+  BoardViewDataSource *dataSource = (BoardViewDataSource *)self.dataSource;
+  dataSource.tradeType = selectedIndex;
+  [self refresh];
 }
 
 @end
