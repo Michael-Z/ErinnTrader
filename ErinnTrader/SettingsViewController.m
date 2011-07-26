@@ -22,10 +22,8 @@
   self.showDoneButton = NO;
   self.showCreditsFooter = NO;
   
-  self.navigationItem.rightBarButtonItem = 
-  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                target:self
-                                                action:@selector(searchButtonTouched)];
+  self.navigationItem.leftBarButtonItem = 
+    [UIBarButtonItem buttonWithType:UIButtonTypeInfoLight target:self action:@selector(infoAction)];
 }
 
 #pragma mark -
@@ -64,6 +62,15 @@
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
+}
+
+#pragma mark -
+#pragma mark Event Handling Methods
+
+- (void)infoAction {
+  TTURLAction *action = [TTURLAction actionWithURLPath:@"tt://credit"];
+  [[action applyAnimated:YES] setTransition:UIViewAnimationTransitionFlipFromRight];
+  [[TTNavigator navigator] openURLAction:action];
 }
 
 #pragma mark -

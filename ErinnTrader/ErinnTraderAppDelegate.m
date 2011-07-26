@@ -40,7 +40,7 @@
   [map from:@"tt://houseShop/item" toViewController:[HouseShopItemViewController class]];
   [map from:@"tt://houseShop/search?q=(initWithSearchQuery:)" toViewController:[HouseShopSearchResultViewController class]];
   [map from:@"tt://settings" toViewController:[SettingsViewController class]];
-  [map from:@"tt://credit" toViewController:[CreditViewController class]];
+  [map from:@"tt://credit" toModalViewController:[CreditViewController class]];
   
   if (![navigator restoreViewControllers]) {  
     [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];  

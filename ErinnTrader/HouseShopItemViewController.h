@@ -2,7 +2,7 @@
 #import <UIKit/UIKit.h>
 #import "HouseShopItem.h"
 
-@interface HouseShopItemViewController : TTViewController {
+@interface HouseShopItemViewController : TTTableViewController {
  @private  
   HouseShopItem *_houseShopItem;
 }

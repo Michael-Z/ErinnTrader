@@ -27,8 +27,29 @@ static NSString* const kLabelTriona     = @"triona/";
 // Logic
 
 - (NSString *)resourcePath {
+  NSString *label = @"";
+  switch ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Server"] intValue]) {
+    case ServerMari:
+      label = kLabelMari;
+      break;
+    case ServerRuari:
+      label = kLabelRuari;
+      break;
+    case ServerTarlach:
+      label = kLabelTarlach;
+      break;
+    case ServerMorrighan:
+      label = kLabelMorrighan;
+      break;
+    case ServerCichol:
+      label = kLabelCichol;
+      break;
+    case ServerTriona:
+      label = kLabelTriona;
+      break;
+  }
   return [NSString stringWithFormat:@"%@%@%@%@", 
-          kServiceBaseURL, kServiceEndPoint, kLabelMari, [self.searchQuery encodeString:NSUTF8StringEncoding]];
+          kServiceBaseURL, kServiceEndPoint, label, [self.searchQuery encodeString:NSUTF8StringEncoding]];
 }
 
 #pragma -
@@ -64,6 +85,8 @@ static NSString* const kLabelTriona     = @"triona/";
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading) {
+    [self.boardItems removeAllObjects];
+    
     TTURLRequest* request = [TTURLRequest requestWithURL:self.resourcePath delegate:self];
     request.cachePolicy = cachePolicy;
     request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;

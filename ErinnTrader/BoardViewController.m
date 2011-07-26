@@ -25,9 +25,9 @@
 
 - (void)initNavigationBar {
   self.navigationItem.rightBarButtonItem = 
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                  target:self
-                                                  action:@selector(searchButtonTouched)];
+    [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                   target:self
+                                                   action:@selector(searchButtonTouched)] autorelease];
 }
 
 - (void)initSearchBar {

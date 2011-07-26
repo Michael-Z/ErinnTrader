@@ -120,18 +120,18 @@
 
 - (NSString*)titleForLoading:(BOOL)reloading {
   if (reloading) {
-    return @"Updating BoardItem...";
+    return @"Updating Official Trading BBS...";
   } else {
-    return @"Loading BoardItem...";
+    return @"Loading Official Trading BBS...";
   }
 }
 
 - (NSString*)titleForEmpty {
-  return @"No BoardItems found.";
+  return @"No Entries found.";
 }
 
 - (NSString*)subtitleForError:(NSError*)error {
-  return @"Sorry, there was an error loading the BoardItem.";
+  return @"Sorry, there was an error loading the Official Trading BBS.";
 }
 
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object {   

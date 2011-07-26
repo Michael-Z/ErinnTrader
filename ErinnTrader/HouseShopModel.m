@@ -25,13 +25,35 @@ static NSString* const kLabelTriona     = @"triona/";
 // Logic
 
 - (NSString *)resourcePath {
+  NSString *label = @"";
+  switch ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Server"] intValue]) {
+    case ServerMari:
+      label = kLabelMari;
+      break;
+    case ServerRuari:
+      label = kLabelRuari;
+      break;
+    case ServerTarlach:
+      label = kLabelTarlach;
+      break;
+    case ServerMorrighan:
+      label = kLabelMorrighan;
+      break;
+    case ServerCichol:
+      label = kLabelCichol;
+      break;
+    case ServerTriona:
+      label = kLabelTriona;
+      break;
+  }
+  
   NSString *path;
   if (self.searchQuery == @"") {
-    path = [NSString stringWithFormat:@"%@%@%@%d", kServiceBaseURL, kServiceEndPoint, kLabelMari, self.page];
+    path = [NSString stringWithFormat:@"%@%@%@%d", kServiceBaseURL, kServiceEndPoint, label, self.page];
   }
   else {
     NSString *query = [NSString stringWithFormat:@"%@/", [self.searchQuery encodeString:NSUTF8StringEncoding]];
-    path = [NSString stringWithFormat:@"%@%@%@%@%d", kServiceBaseURL, kServiceEndPoint, kLabelMari, query, self.page];
+    path = [NSString stringWithFormat:@"%@%@%@%@%d", kServiceBaseURL, kServiceEndPoint, label, query, self.page];
   }
   return path;
 }
@@ -80,7 +102,7 @@ static NSString* const kLabelTriona     = @"triona/";
     }
     
     TTURLRequest* request = [TTURLRequest requestWithURL:self.resourcePath delegate:self];
-    request.cachePolicy = TTURLRequestCachePolicyNoCache;
+    request.cachePolicy = TTURLRequestCachePolicyNone;
     request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
     request.response = [[[TTURLJSONResponse alloc] init] autorelease];
     

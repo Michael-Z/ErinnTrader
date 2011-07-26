@@ -1,6 +1,10 @@
 
 #import "CreditViewController.h"
 
+@interface CreditViewController ()
+- (NSDictionary *)locations;
+@end
+
 @implementation CreditViewController
 
 #pragma mark -
@@ -11,7 +15,20 @@
 
 - (void)initView {
   UIImage* image = [UIImage imageNamed:@"credit.png"];
-  self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"Credit" image:image tag:3] autorelease];
+  self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"Credit" image:image tag:0] autorelease];
+}
+
+- (void)initNavigationBar {
+  self.navigationController.navigationBarHidden = YES;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Logic
+
+- (NSDictionary *)locations {
+  return [NSDictionary dictionaryWithObjectsAndKeys:
+          [NSURL URLWithString:@"http://twitter.com/#!/cohakims_work"], @"cohakim",
+          nil];
 }
 
 #pragma mark -
@@ -21,6 +38,14 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     [self initView];
+    [self initNavigationBar];
+  }
+  return self;
+}
+
+- (id)initWithNavigatorURL:(NSURL *)URL query:(NSDictionary *)query { 
+  self = [self initWithNibName:@"CreditView" bundle:nil];
+  if (self) {
   }
   return self;
 }
@@ -43,6 +68,22 @@
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  self.navigationController.navigationBarHidden = YES;
+}
+
+#pragma mark -
+#pragma EventHandling Methods
+
+- (IBAction)backButtonTouched {
+  [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)visitMyTwitterButtonTouched:(id)sender {
+  [[UIApplication sharedApplication] openURL:[self.locations objectForKey:@"cohakim"]];
 }
 
 @end

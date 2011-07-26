@@ -16,5 +16,6 @@
   #import <Three20/Three20+Additions.h>
   #import "extThree20JSON/extThree20JSON.h"
   #import "NSString+Encode.h"
+  #import "UIBarButtonItem+ButtonType.h"
   #import "Constants.h"
 #endif

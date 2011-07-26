@@ -1,46 +1,28 @@
 
 #import "BoardItemViewController.h"
-#import "BoardViewDataSource.h"
+#import "BoardItemViewDataSource.h"
 
 @interface BoardItemViewController ()
-- (void)initView;
-- (void)layoutView;
 @end
 
 @implementation BoardItemViewController
 
 @synthesize boardItem = _boardItem;
-@synthesize titleLabel = _titleLabel;
-@synthesize detailText = _detailText;
 
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)initView {
-  self.view = [[[TTView alloc] initWithFrame:TTScreenBounds()] autorelease];
-  self.titleLabel = [[UILabel alloc] init];
-  self.detailText = [[UITextView alloc] init];
-  self.detailText.editable = NO;
-  [self.view addSubview:self.titleLabel];
-  [self.view addSubview:self.detailText];
+- (void)initTableView {
+  self.tableViewStyle = UITableViewStyleGrouped;
+  self.variableHeightRows = YES;
+  self.tableView.scrollEnabled = NO;
 }
 
-- (void)layoutView {
-  self.view.backgroundColor = [UIColor lightGrayColor];
-  self.titleLabel.frame = CGRectMake(0, 0, 320, 44);
-  self.detailText.frame = CGRectMake(0, 45, 320, 400);
+#pragma mark -
+#pragma mark Three20 Inherit Methods
 
-//  self.titleLabel.textColor = TTSTYLEVAR(boardItemHeadingColor);
-//  self.titleLabel.font = TTSTYLEVAR(boardItemHeadingFont);
-  self.titleLabel.textAlignment = UITextAlignmentLeft;
-  self.titleLabel.contentMode = UIViewContentModeCenter;
-  self.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
-  self.titleLabel.numberOfLines = 0;
-
-  self.titleLabel.text = [NSString stringWithFormat:@"%@\n%@",
-                          self.boardItem.title,
-                          self.boardItem.author];
-  self.detailText.text = self.boardItem.content;
+- (void)createModel {
+  self.dataSource = [[[BoardItemViewDataSource alloc] initWithBoardItem:self.boardItem] autorelease];
 }
 
 #pragma mark -
@@ -50,14 +32,13 @@
   self = [super init];
   if (self) {
     self.boardItem = (BoardItem *)[query objectForKey:@"item"];
+    [self initTableView];
   }
   return self;
 }
 
 - (void)loadView {
   [super loadView];
-  [self initView];
-  [self layoutView];
 }
 
 

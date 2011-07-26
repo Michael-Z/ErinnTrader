@@ -11,6 +11,12 @@
 			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Key</key>
+			<string>Server</string>
+			<key>Title</key>
+			<string>Server</string>
 			<key>Titles</key>
 			<array>
 				<string>Mari</string>
@@ -20,6 +26,8 @@
 				<string>Cichol</string>
 				<string>Triona</string>
 			</array>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
 			<key>Values</key>
 			<array>
 				<integer>0</integer>
@@ -29,14 +37,6 @@
 				<integer>4</integer>
 				<integer>5</integer>
 			</array>
-			<key>Type</key>
-			<string>PSMultiValueSpecifier</string>
-			<key>Title</key>
-			<string>Server</string>
-			<key>Key</key>
-			<string>Server</string>
-			<key>DefaultValue</key>
-			<integer>0</integer>
 		</dict>
 	</array>
 	<key>StringsTable</key>

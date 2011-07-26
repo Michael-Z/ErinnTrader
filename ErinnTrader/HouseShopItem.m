@@ -11,29 +11,6 @@
 @synthesize comment = _comment;
 @synthesize coupon = _coupon;
 
-#pragma mark -
-#pragma mark Accessor Methods
-
-- (NSString *)formattedPrice {
-  int price = [[self.price stringByReplacingOccurrencesOfString:@"," 
-                                                     withString:@""] floatValue];
-  NSString *formatted;
-  if (price < 1000) {
-    formatted = [NSString stringWithFormat:@"%d", price];
-  }
-  else if (price < 1000000) {
-    formatted = [NSString stringWithFormat:@"%dK", price / 1000];
-  }
-  else {
-    NSDecimalNumber *decimalPrice = 
-    [NSDecimalNumber decimalNumberWithDecimal:[[NSNumber numberWithInt:price] decimalValue]];
-    float floatPrice = 
-    [[decimalPrice decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"1000000"]] floatValue];
-    formatted = [NSString stringWithFormat:@"%.1fM", floatPrice];
-  }
-  return formatted;
-}
-
 #pragma -
 #pragma Inheritance Methods
 

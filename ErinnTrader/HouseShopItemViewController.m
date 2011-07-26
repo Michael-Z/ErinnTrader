@@ -1,9 +1,8 @@
 
 #import "HouseShopItemViewController.h"
+#import "HouseShopItemViewDataSource.h"
 
 @interface HouseShopItemViewController ()
-- (void)initView;
-- (void)layoutView;
 @end
 
 @implementation HouseShopItemViewController
@@ -13,12 +12,17 @@
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)initView {
-  self.view = [[[TTView alloc] initWithFrame:TTScreenBounds()] autorelease];
+- (void)initTableView {
+  self.tableViewStyle = UITableViewStyleGrouped;
+  self.variableHeightRows = YES;
+  self.tableView.scrollEnabled = NO;
 }
 
-- (void)layoutView {
-  self.view.backgroundColor = [UIColor lightGrayColor];
+#pragma mark -
+#pragma mark Three20 Inherit Methods
+
+- (void)createModel {
+  self.dataSource = [[[HouseShopItemViewDataSource alloc] initWithHouseShopItem:self.houseShopItem] autorelease];
 }
 
 #pragma mark -
@@ -28,14 +32,13 @@
   self = [super init];
   if (self) {
     self.houseShopItem = (HouseShopItem *)[query objectForKey:@"item"];
+    [self initTableView];
   }
   return self;
 }
 
 -(void)loadView {
   [super loadView];
-  [self initView];
-  [self layoutView];
 }
 
 - (void)viewDidLoad {

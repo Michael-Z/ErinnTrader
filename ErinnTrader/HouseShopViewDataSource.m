@@ -10,11 +10,37 @@
 @synthesize houseShopModel = _hosueShopModel;
 
 #pragma -
+#pragma Private Methods
+
+////////////////////////////////////////////////////////////////////////////////
+// Accessor
+
+- (NSString *)formattedPriceForItem:(HouseShopItem *)item {
+  int price = [[item.price stringByReplacingOccurrencesOfString:@"," 
+                                                     withString:@""] floatValue];
+  NSString *formattedPrice;
+  if (price < 1000) {
+    formattedPrice = [NSString stringWithFormat:@"%d", price];
+  }
+  else if (price < 1000000) {
+    formattedPrice = [NSString stringWithFormat:@"%dK", price / 1000];
+  }
+  else {
+    NSDecimalNumber *decimalPrice = 
+    [NSDecimalNumber decimalNumberWithDecimal:[[NSNumber numberWithInt:price] decimalValue]];
+    float floatPrice = 
+    [[decimalPrice decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"1000000"]] floatValue];
+    formattedPrice = [NSString stringWithFormat:@"%.1fM", floatPrice];
+  }
+  return formattedPrice;
+}
+
+#pragma -
 #pragma Inheritance Methods
 
 - (id)init {
-  self = [super init];
-  if (self) {
+//  self = [super init];
+  if (self = [super init]) {
     self.houseShopModel = [[HouseShopModel alloc] init];
   }
   return self;
@@ -44,7 +70,7 @@
   NSMutableArray* items = [NSMutableArray array];
   for (HouseShopItem *item in self.houseShopModel.houseShopItems) {
     ETTableHouseShopItem *tableItem = [ETTableHouseShopItem itemWithText:item.item 
-                                                                 caption:item.formattedPrice
+                                                                 caption:[self formattedPriceForItem:item]
                                                                      URL:@"tt://dev/null"];
     tableItem.userInfo = item;
     [items addObject:tableItem];
@@ -59,18 +85,18 @@
 
 - (NSString*)titleForLoading:(BOOL)reloading {
   if (reloading) {
-    return @"Updating BoardItem...";
+    return @"Updating HouseShop Items...";
   } else {
-    return @"Loading BoardItem...";
+    return @"Loading HouseShop Items...";
   }
 }
 
 - (NSString*)titleForEmpty {
-  return @"No BoardItems found.";
+  return @"No HouseShop Items found.";
 }
 
 - (NSString*)subtitleForError:(NSError*)error {
-  return @"Sorry, there was an error loading the BoardItem.";
+  return @"Sorry, there was an error loading the HouseShop Items.";
 }
 
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object {   

@@ -8,7 +8,6 @@
                     @"tt://board",
                     @"tt://houseShop",
                     @"tt://settings",
-                    @"tt://credit",
                     nil]];
 }  
 

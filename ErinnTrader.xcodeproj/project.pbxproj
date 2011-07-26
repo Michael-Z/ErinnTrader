@@ -16,11 +16,15 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		6C031EA813DD60C3007E0B96 /* CreditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C031EA613DD60C3007E0B96 /* CreditView.xib */; };
+		6C031EAC13DD61DF007E0B96 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C031EAB13DD61DF007E0B96 /* CreditViewController.m */; };
 		6C3D5DE313CD942F007AE5CC /* board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D5DDE13CD942F007AE5CC /* board@2x.png */; };
 		6C3D5DE413CD942F007AE5CC /* credit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D5DDF13CD942F007AE5CC /* credit@2x.png */; };
 		6C3D5DE513CD942F007AE5CC /* houseshop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D5DE013CD942F007AE5CC /* houseshop@2x.png */; };
 		6C3D5DE613CD942F007AE5CC /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D5DE113CD942F007AE5CC /* settings@2x.png */; };
 		6C3D5DE713CD942F007AE5CC /* timeline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D5DE213CD942F007AE5CC /* timeline@2x.png */; };
+		6C4395C813D8231600120795 /* UIBarButtonItem+ButtonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4395C713D8231600120795 /* UIBarButtonItem+ButtonType.m */; };
+		6C4768CA13D7C2C9005B4241 /* HouseShopItemViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4768C913D7C2C9005B4241 /* HouseShopItemViewDataSource.m */; };
 		6C5ACA0413CAF1EA00A25FF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C5ACA0313CAF1EA00A25FF5 /* UIKit.framework */; };
 		6C5ACA0613CAF1EA00A25FF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C5ACA0513CAF1EA00A25FF5 /* Foundation.framework */; };
 		6C5ACA0813CAF1EA00A25FF5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C5ACA0713CAF1EA00A25FF5 /* CoreGraphics.framework */; };
@@ -72,7 +76,6 @@
 		6C8CF11613CC0C6100534D77 /* IASKSpecifierValuesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C8CF10113CC0C6100534D77 /* IASKSpecifierValuesView.xib */; };
 		6C8CF11A13CC0C9A00534D77 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8CF11913CC0C9A00534D77 /* SettingsViewController.m */; };
 		6C8CF11C13CC0D3700534D77 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6C8CF11B13CC0D3700534D77 /* InAppSettings.bundle */; };
-		6C8CF12013CC0D5E00534D77 /* CreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8CF11F13CC0D5E00534D77 /* CreditViewController.m */; };
 		6C8CF12213CC0F4700534D77 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C8CF12113CC0F4600534D77 /* MessageUI.framework */; };
 		6C8CF12513CC11BE00534D77 /* BoardSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8CF12413CC11BD00534D77 /* BoardSearchResultViewController.m */; };
 		6C8CF12813CC131E00534D77 /* BoardItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8CF12713CC131D00534D77 /* BoardItemViewController.m */; };
@@ -82,6 +85,7 @@
 		6C998A3313D57B3300972117 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C998A3213D57B3300972117 /* AppHelper.m */; };
 		6CCDA38313D670F6004D664B /* ETTableHouseShopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCDA38213D670F6004D664B /* ETTableHouseShopItem.m */; };
 		6CCDA38613D67106004D664B /* ETTableHouseShopItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCDA38513D67106004D664B /* ETTableHouseShopItemCell.m */; };
+		6CCDA38913D68037004D664B /* BoardItemViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCDA38813D68037004D664B /* BoardItemViewDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,11 +276,18 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = Three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = Three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = Three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		6C031EA713DD60C3007E0B96 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CreditView.xib; sourceTree = "<group>"; };
+		6C031EAA13DD61DF007E0B96 /* CreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditViewController.h; sourceTree = "<group>"; };
+		6C031EAB13DD61DF007E0B96 /* CreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditViewController.m; sourceTree = "<group>"; };
 		6C3D5DDE13CD942F007AE5CC /* board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "board@2x.png"; path = "Resources/board@2x.png"; sourceTree = "<group>"; };
 		6C3D5DDF13CD942F007AE5CC /* credit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "credit@2x.png"; path = "Resources/credit@2x.png"; sourceTree = "<group>"; };
 		6C3D5DE013CD942F007AE5CC /* houseshop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "houseshop@2x.png"; path = "Resources/houseshop@2x.png"; sourceTree = "<group>"; };
 		6C3D5DE113CD942F007AE5CC /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Resources/settings@2x.png"; sourceTree = "<group>"; };
 		6C3D5DE213CD942F007AE5CC /* timeline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "timeline@2x.png"; path = "Resources/timeline@2x.png"; sourceTree = "<group>"; };
+		6C4395C613D8231600120795 /* UIBarButtonItem+ButtonType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ButtonType.h"; sourceTree = "<group>"; };
+		6C4395C713D8231600120795 /* UIBarButtonItem+ButtonType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ButtonType.m"; sourceTree = "<group>"; };
+		6C4768C813D7C2C9005B4241 /* HouseShopItemViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseShopItemViewDataSource.h; sourceTree = "<group>"; };
+		6C4768C913D7C2C9005B4241 /* HouseShopItemViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseShopItemViewDataSource.m; sourceTree = "<group>"; };
 		6C5AC9FF13CAF1EA00A25FF5 /* ErinnTrader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ErinnTrader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5ACA0313CAF1EA00A25FF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6C5ACA0513CAF1EA00A25FF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -364,8 +375,6 @@
 		6C8CF11813CC0C9A00534D77 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		6C8CF11913CC0C9A00534D77 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		6C8CF11B13CC0D3700534D77 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = InAppSettings.bundle; path = Resources/InAppSettings.bundle; sourceTree = "<group>"; };
-		6C8CF11E13CC0D5E00534D77 /* CreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditViewController.h; sourceTree = "<group>"; };
-		6C8CF11F13CC0D5E00534D77 /* CreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditViewController.m; sourceTree = "<group>"; };
 		6C8CF12113CC0F4600534D77 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		6C8CF12313CC11BD00534D77 /* BoardSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardSearchResultViewController.h; sourceTree = "<group>"; };
 		6C8CF12413CC11BD00534D77 /* BoardSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardSearchResultViewController.m; sourceTree = "<group>"; };
@@ -383,6 +392,8 @@
 		6CCDA38213D670F6004D664B /* ETTableHouseShopItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETTableHouseShopItem.m; sourceTree = "<group>"; };
 		6CCDA38413D67106004D664B /* ETTableHouseShopItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETTableHouseShopItemCell.h; sourceTree = "<group>"; };
 		6CCDA38513D67106004D664B /* ETTableHouseShopItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETTableHouseShopItemCell.m; sourceTree = "<group>"; };
+		6CCDA38713D68037004D664B /* BoardItemViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardItemViewDataSource.h; sourceTree = "<group>"; };
+		6CCDA38813D68037004D664B /* BoardItemViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardItemViewDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -482,6 +493,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6C031EA913DD61C4007E0B96 /* Credit */ = {
+			isa = PBXGroup;
+			children = (
+				6C031EAA13DD61DF007E0B96 /* CreditViewController.h */,
+				6C031EAB13DD61DF007E0B96 /* CreditViewController.m */,
+			);
+			name = Credit;
+			sourceTree = "<group>";
+		};
 		6C5AC9F413CAF1E900A25FF5 = {
 			isa = PBXGroup;
 			children = (
@@ -571,6 +591,8 @@
 			children = (
 				6C7649C413CD68CA00F265CD /* TTTabStrip+Justify.h */,
 				6C7649C513CD68CA00F265CD /* TTTabStrip+Justify.m */,
+				6C4395C613D8231600120795 /* UIBarButtonItem+ButtonType.h */,
+				6C4395C713D8231600120795 /* UIBarButtonItem+ButtonType.m */,
 			);
 			path = "UIKit-Extensions";
 			sourceTree = SOURCE_ROOT;
@@ -617,6 +639,8 @@
 			children = (
 				6C8CEFE313CBD01800534D77 /* BoardViewDataSource.h */,
 				6C8CEFE413CBD01800534D77 /* BoardViewDataSource.m */,
+				6CCDA38713D68037004D664B /* BoardItemViewDataSource.h */,
+				6CCDA38813D68037004D664B /* BoardItemViewDataSource.m */,
 			);
 			name = Board;
 			sourceTree = "<group>";
@@ -648,6 +672,8 @@
 			children = (
 				6C8CF0D513CBFE5200534D77 /* HouseShopViewDataSource.h */,
 				6C8CF0D613CBFE5200534D77 /* HouseShopViewDataSource.m */,
+				6C4768C813D7C2C9005B4241 /* HouseShopItemViewDataSource.h */,
+				6C4768C913D7C2C9005B4241 /* HouseShopItemViewDataSource.m */,
 			);
 			name = HouseShop;
 			sourceTree = "<group>";
@@ -748,15 +774,6 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		6C8CF11D13CC0D4600534D77 /* Credit */ = {
-			isa = PBXGroup;
-			children = (
-				6C8CF11E13CC0D5E00534D77 /* CreditViewController.h */,
-				6C8CF11F13CC0D5E00534D77 /* CreditViewController.m */,
-			);
-			name = Credit;
-			sourceTree = "<group>";
-		};
 		6C998A0F13D5726500972117 /* TableItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -839,7 +856,7 @@
 				6C8CEF5E13CBCDE300534D77 /* Board */,
 				6C8CEF5D13CBCDE100534D77 /* HouseShop */,
 				6C8CF11713CC0C7A00534D77 /* Settings */,
-				6C8CF11D13CC0D4600534D77 /* Credit */,
+				6C031EA913DD61C4007E0B96 /* Credit */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -847,6 +864,7 @@
 		6C9DF24513CAF39F001C143F /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				6C031EA613DD60C3007E0B96 /* CreditView.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -1103,6 +1121,7 @@
 				6C3D5DE513CD942F007AE5CC /* houseshop@2x.png in Resources */,
 				6C3D5DE613CD942F007AE5CC /* settings@2x.png in Resources */,
 				6C3D5DE713CD942F007AE5CC /* timeline@2x.png in Resources */,
+				6C031EA813DD60C3007E0B96 /* CreditView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1140,7 +1159,6 @@
 				6C8CF10F13CC0C6100534D77 /* IASKSwitch.m in Sources */,
 				6C8CF11013CC0C6100534D77 /* IASKTextField.m in Sources */,
 				6C8CF11A13CC0C9A00534D77 /* SettingsViewController.m in Sources */,
-				6C8CF12013CC0D5E00534D77 /* CreditViewController.m in Sources */,
 				6C8CF12513CC11BE00534D77 /* BoardSearchResultViewController.m in Sources */,
 				6C8CF12813CC131E00534D77 /* BoardItemViewController.m in Sources */,
 				6C7647DE13CD285700F265CD /* HouseShopSearchResultViewController.m in Sources */,
@@ -1156,6 +1174,10 @@
 				6C998A3313D57B3300972117 /* AppHelper.m in Sources */,
 				6CCDA38313D670F6004D664B /* ETTableHouseShopItem.m in Sources */,
 				6CCDA38613D67106004D664B /* ETTableHouseShopItemCell.m in Sources */,
+				6CCDA38913D68037004D664B /* BoardItemViewDataSource.m in Sources */,
+				6C4768CA13D7C2C9005B4241 /* HouseShopItemViewDataSource.m in Sources */,
+				6C4395C813D8231600120795 /* UIBarButtonItem+ButtonType.m in Sources */,
+				6C031EAC13DD61DF007E0B96 /* CreditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1205,6 +1227,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6C031EA613DD60C3007E0B96 /* CreditView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6C031EA713DD60C3007E0B96 /* en */,
+			);
+			name = CreditView.xib;
+			sourceTree = "<group>";
+		};
 		6C5ACA0C13CAF1EA00A25FF5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1243,7 +1273,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kimihiko Hattori";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kimihiko Hattori";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1256,6 +1287,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "CDABDEEB-45A8-491B-A914-DB19DE3389CA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CDABDEEB-45A8-491B-A914-DB19DE3389CA";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1279,12 +1312,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ErinnTrader/ErinnTrader-Prefix.pch";
 				INFOPLIST_FILE = "ErinnTrader/ErinnTrader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
