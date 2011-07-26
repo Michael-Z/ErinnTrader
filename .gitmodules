@@ -1,0 +1,6 @@
+[submodule "InAppSettingsKit"]
+	path = InAppSettingsKit
+	url = https://github.com/futuretap/InAppSettingsKit.git
+[submodule "Three20"]
+	path = Three20
+	url = https://github.com/facebook/three20.git
