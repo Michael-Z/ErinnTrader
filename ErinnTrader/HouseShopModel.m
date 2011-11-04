@@ -64,7 +64,7 @@ static NSString* const kLabelTriona     = @"triona/";
 - (id)init {
   self = [super init];
   if (self) {
-    self.houseShopItems = [[NSMutableArray array] retain];
+    self.houseShopItems = [NSMutableArray array];
     self.searchQuery = @"";
     self.page = 1;
   }
@@ -74,7 +74,7 @@ static NSString* const kLabelTriona     = @"triona/";
 - (id)initWithSearchQuery:(NSString *)searchQuery {
   self = [super init];
   if (self) {
-    self.houseShopItems = [[NSMutableArray array] retain];
+    self.houseShopItems = [NSMutableArray array];
     self.searchQuery = searchQuery;
     self.page = 1;
   }

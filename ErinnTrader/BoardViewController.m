@@ -31,14 +31,14 @@
 }
 
 - (void)initSearchBar {
-  self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, -44, 320, 44)];
+  self.searchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0, -44, 320, 44)] autorelease];
   self.searchBar.delegate = self;
   self.searchBar.showsCancelButton = YES;
   [self.navigationController.navigationBar addSubview:self.searchBar];
 }
 
 - (void)initTabBar {
-  self.tabBar = [[TTTabStrip alloc] initWithFrame:CGRectMake(0, 0, 320, 41)];
+  self.tabBar = [[[TTTabStrip alloc] initWithFrame:CGRectMake(0, 0, 320, 41)] autorelease];
   self.tabBar.delegate = self;
   self.tabBar.tabItems = [NSArray arrayWithObjects:
                           [[[TTTabItem alloc] initWithTitle:@"    ALL    "] autorelease],
@@ -122,6 +122,10 @@
 #pragma mark TTTableView Inherit Metnods
 
 - (void)didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+  if ([object isKindOfClass:[TTTableMoreButton class]]) {
+    return;
+  }
+  
   BoardItem *item = (BoardItem *)((TTTableMessageItem *)object).userInfo;
   TTURLAction *action = [[[TTURLAction actionWithURLPath:@"tt://board/item"]
                                        applyQuery:[NSDictionary dictionaryWithObject:item forKey:@"item"]] 

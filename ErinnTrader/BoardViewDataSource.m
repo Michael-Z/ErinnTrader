@@ -81,7 +81,7 @@
 - (id)init {
   self = [super init];
   if (self) {
-    self.boardModel = [[BoardModel alloc] init];
+    self.boardModel = [[[BoardModel alloc] init] autorelease];
   }
   return self;
 }
@@ -89,7 +89,7 @@
 - (id)initWithSearchQuery:(NSString *)searchQuery {
   self = [super init];
   if (self) {
-    self.boardModel = [[BoardModel alloc] initWithSearchQuery:searchQuery];
+    self.boardModel = [[[BoardModel alloc] initWithSearchQuery:searchQuery] autorelease];
   }
   return self;
 }
@@ -115,6 +115,11 @@
     tableItem.userInfo = item;
     [items addObject:tableItem];
   }
+  
+  if (!self.boardModel.finished) {
+    [items addObject:[TTTableMoreButton itemWithText:@"more…"]];
+  }
+  
   self.items = [self filteredItems:items];
 }
 

@@ -26,7 +26,7 @@
 }
 
 - (void)initSearchBar {
-  self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, -44, 320, 44)];
+  self.searchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0, -44, 320, 44)] autorelease];
   self.searchBar.delegate = self;
   self.searchBar.showsCancelButton = YES;
   [self.navigationController.navigationBar addSubview:self.searchBar];

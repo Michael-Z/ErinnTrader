@@ -39,9 +39,9 @@
 #pragma Inheritance Methods
 
 - (id)init {
-//  self = [super init];
-  if (self = [super init]) {
-    self.houseShopModel = [[HouseShopModel alloc] init];
+  self = [super init];
+  if (self) {
+    self.houseShopModel = [[[HouseShopModel alloc] init] autorelease];
   }
   return self;
 }
@@ -49,7 +49,7 @@
 - (id)initWithSearchQuery:(NSString *)searchQuery {
   self = [super init];
   if (self) {
-    self.houseShopModel = [[HouseShopModel alloc] initWithSearchQuery:searchQuery];
+    self.houseShopModel = [[[HouseShopModel alloc] initWithSearchQuery:searchQuery] autorelease];
   }
   return self;
 }

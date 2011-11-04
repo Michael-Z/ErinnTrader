@@ -74,18 +74,23 @@
                                                       subtitle:[self subtitleForTableItem:self.boardItem]
                                                            URL:nil];
 
+  // hyperlink cell ------------------------------------------------------------
+  TTTableLink *linkItem = [TTTableLink itemWithText:@"Open Official Trading BBS" URL:self.boardItem.url];
+  
   // detail text cell ----------------------------------------------------------
   UITextView *textItem = [[[UITextView alloc] init] autorelease];
   textItem.editable = NO;
   textItem.text = [self contentWithoutNoisyString:self.boardItem];
-
-  textItem.height = tableView.bounds.size.height - 23 -
-    [ETTableBoardItemCell tableView:tableView rowHeightForObject:titleItem];
+  
+  CGFloat titleHeight = [ETTableBoardItemCell tableView:tableView rowHeightForObject:titleItem];
+  CGFloat linkHeight = [TTTableLinkedItemCell tableView:tableView rowHeightForObject:linkItem];
+  textItem.height = tableView.bounds.size.height - 22 - titleHeight - linkHeight;
 
   // add to table items --------------------------------------------------------
   NSMutableArray* items = [NSMutableArray array];
   [items addObject:titleItem];
   [items addObject:textItem];
+  [items addObject:linkItem];
   self.items = items;
 }
 

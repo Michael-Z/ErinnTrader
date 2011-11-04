@@ -19,6 +19,8 @@ static NSString* const kLabelTriona     = @"triona/";
 
 @synthesize boardItems = _boardItems;
 @synthesize searchQuery = _searchQuery;
+@synthesize page = _page;
+@synthesize finished = _finished;
 
 #pragma -
 #pragma Private Methods
@@ -58,8 +60,9 @@ static NSString* const kLabelTriona     = @"triona/";
 - (id)init {
   self = [super init];
   if (self) {
-    self.boardItems = [[NSMutableArray array] retain];
+    self.boardItems = [NSMutableArray array];
     self.searchQuery = @"";
+    self.page = 1;
   }
   return self;
 }
@@ -67,8 +70,9 @@ static NSString* const kLabelTriona     = @"triona/";
 - (id)initWithSearchQuery:(NSString *)searchQuery {
   self = [super init];
   if (self) {
-    self.boardItems = [[NSMutableArray array] retain];
+    self.boardItems = [NSMutableArray array];
     self.searchQuery = searchQuery;
+    self.page = 1;
     [[TTURLCache sharedCache] removeURL:self.resourcePath fromDisk:YES];
   }
   return self;
@@ -85,7 +89,14 @@ static NSString* const kLabelTriona     = @"triona/";
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading) {
-    [self.boardItems removeAllObjects];
+    if (more) {
+      self.page = self.page + 1;
+    }
+    else {
+      self.page = 1;
+      self.finished = NO;
+      [self.boardItems removeAllObjects];
+    }    
     
     TTURLRequest* request = [TTURLRequest requestWithURL:self.resourcePath delegate:self];
     request.cachePolicy = cachePolicy;
@@ -102,14 +113,24 @@ static NSString* const kLabelTriona     = @"triona/";
 
   int index = 0;
   for (NSDictionary *element in elements) {
+    if (index < ((self.page-1)*50) || (self.page*50) <= index) {
+      index++;
+      continue;
+    }
+    
     BoardItem *item = [[[BoardItem alloc] init] autorelease];
     item.id         = index;
     item.title      = [element objectForKey:@"title"];
     item.author     = [element objectForKey:@"author"];
     item.content    = [element objectForKey:@"content"];
+    item.url        = [element objectForKey:@"url"];
     item.published  = [[element objectForKey:@"published"] intValue];
     [self.boardItems addObject:item];
     index++;
+  }
+
+  if ([elements count] <= (self.page*50) || self.page >= 4) {
+    self.finished = YES;
   }
   
   [super requestDidFinishLoad:request];

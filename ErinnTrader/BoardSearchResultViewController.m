@@ -15,7 +15,7 @@
 // initializer
 
 - (void)initTabBar {
-  self.tabBar = [[TTTabStrip alloc] initWithFrame:CGRectMake(0, 0, 320, 41)];
+  self.tabBar = [[[TTTabStrip alloc] initWithFrame:CGRectMake(0, 0, 320, 41)] autorelease];
   self.tabBar.delegate = self;
   self.tabBar.tabItems = [NSArray arrayWithObjects:
                           [[[TTTabItem alloc] initWithTitle:@"    ALL    "] autorelease],
